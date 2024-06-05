@@ -46,7 +46,7 @@ keymap.set("n", "<leader>qc", ":cclose<CR>") -- close quickfix list
 -- Vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 
--- Nvim-tree
+-- NeoTree
 keymap.set("n", "<leader>ee", ":Neotree toggle<CR>") -- toggle file explorer
 keymap.set("n", "<leader>ef", ":Neotree float<CR>") -- Float
 keymap.set("n", "<leader>eo", ":Neotree focus<CR>") -- focus
@@ -61,6 +61,7 @@ keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_
 keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {})
 keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {})
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
+keymap.set('n', '<space>*', require('telescope.builtin').grep_string, {})
 
 -- Git-blame
 keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
