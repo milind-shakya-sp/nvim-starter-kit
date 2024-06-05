@@ -1,25 +1,22 @@
--- File Explorer / Tree
 return {
-  -- https://github.com/nvim-tree/nvim-tree.lua
-  'nvim-tree/nvim-tree.lua',
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.x",
   dependencies = {
-    -- https://github.com/nvim-tree/nvim-web-devicons
-    'nvim-tree/nvim-web-devicons', -- Fancy icon support
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
+    "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   opts = {
-    actions = {
-      open_file = {
-        window_picker = {
-          enable = false
-        },
+     window = {
+      mappings = { ["P"] = {
+        "toggle_preview",
+        config = {
+          use_float = false,
+          use_image_nvim = true
+        }
       }
-    },
-  },
-  config = function (_, opts)
-    -- Recommended settings to disable default netrw file explorer
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-    require("nvim-tree").setup(opts)
-  end
+     }
+    }
+  }
 }
-
