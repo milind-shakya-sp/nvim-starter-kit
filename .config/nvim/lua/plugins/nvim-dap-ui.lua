@@ -108,47 +108,45 @@ return {
     -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
     dap.configurations.java = {
       {
-        name = "Debug Launch (2GB)";
-        type = 'java';
-        request = 'launch';
-        vmArgs = "" ..
-          "-Xmx2g "
+        --  gw integrationTest --tests com.tripadvisor.service.aps.web.queryAppListWebTest -Precord.contract=true --debug-jvm
+        --  Set up port forwarding if you are debugging from intellij or remote machine
+        --  ssh -L 5005:yoursled.sleds.dev.tripadvisor.com:5005 -o ServerAliveInterval=100 yoursled.sleds.dev.tripadvisor.com
+        name = "Debug (Attach) - Remote used for tests",
+        type = "java",
+        request = "attach",
+        hostName = "127.0.0.1",
+        port = 5005,
       },
       {
-        name = "Debug Attach (8000)";
-        type = 'java';
-        request = 'attach';
-        hostName = "127.0.0.1";
-        port = 8000;
+        name = "Debug (Attach) - wps",
+        type = "java",
+        request = "attach",
+        hostName = "mshakya-exp.sleds.dev.tripadvisor.com",
+        vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:17755',
+        port = 17755,
       },
       {
-        name = "Debug Attach (5005)";
-        type = 'java';
-        request = 'attach';
-        hostName = "127.0.0.1";
-        port = 5005;
+        name = "Debug (Attach) - odmt",
+        type = "java",
+        request = "attach",
+        hostName = "mshakya-exp.sleds.dev.tripadvisor.com",
+        vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:19433',
+        port = 19433,
       },
       {
-        name = "My Custom Java Run Configuration",
+        name = "Debug (Attach) - shelf-service",
+        type = "java",
+        request = "attach",
+        hostName = "mshakya-exp.sleds.dev.tripadvisor.com",
+        vmArgs = '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:18443',
+        port = 18443,
+      },
+      {
+        name = "Debug Non-Project class",
         type = "java",
         request = "launch",
-        -- You need to extend the classPath to list your dependencies.
-        -- `nvim-jdtls` would automatically add the `classPaths` property if it is missing
-        -- classPaths = {},
-
-        -- If using multi-module projects, remove otherwise.
-        -- projectName = "yourProjectName",
-
-        -- javaExec = "java",
-        mainClass = "replace.with.your.fully.qualified.MainClass",
-
-        -- If using the JDK9+ module system, this needs to be extended
-        -- `nvim-jdtls` would automatically populate this property
-        -- modulePaths = {},
-        vmArgs = "" ..
-          "-Xmx2g "
+        program = "${file}",
       },
     }
   end
 }
-
