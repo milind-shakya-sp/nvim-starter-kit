@@ -16,6 +16,11 @@ return {
     },
   },
   opts = {
+    pickers = {
+      find_files = {
+        hidden = true,
+      }
+    },
     defaults = {
       layout_config = {
         vertical = {
