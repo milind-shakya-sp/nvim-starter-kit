@@ -11,6 +11,7 @@ keymap.set("n", "<leader>qq", ":q!<CR>") -- quit without saving
 keymap.set("n", "<leader>w", ":w<CR>") -- save
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
 keymap.set("n", "<leader>u", ":ArgWrap<CR>") -- Arg wrap
+keymap.set("n", "<f9>", ":noh<CR>") -- Clear selection
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -60,6 +61,7 @@ keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, {})
 keymap.set('n', '<leader>fs', require('telescope.builtin').current_buffer_fuzzy_find, {})
 keymap.set('n', '<leader>fo', require('telescope.builtin').lsp_document_symbols, {})
 keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {})
+keymap.set('n', '<leader>ch', require('telescope.builtin').command_history, {})
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
 keymap.set('n', '<space>*', require('telescope.builtin').grep_string, {})
 
@@ -140,7 +142,7 @@ keymap.set("n", '<leader>dt', function() require('dap').terminate(); require('da
 keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
 keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
 keymap.set("n", '<leader>di', function() require "dap.ui.widgets".hover() end)
-keymap.set("n", '<leader>d?', function() local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes) end)
+keymap.set("n", '<leader>dn', function() local widgets = require "dap.ui.widgets"; widgets.centered_float(widgets.scopes) end)
 keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
 keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
