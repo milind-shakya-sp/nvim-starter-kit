@@ -8,6 +8,7 @@ keymap.set("i", "jj", "<ESC>") -- exit insert mode with jk
 keymap.set("i", "ii", "<ESC>") -- exit insert mode with ii
 keymap.set("n", "<leader>wq", ":wq<CR>") -- save and quit
 keymap.set("n", "<leader>qq", ":q!<CR>") -- quit without saving
+keymap.set("n", "<leader>ss", ":SessionSave<CR>") -- quit without saving
 keymap.set("n", "<leader>w", ":w<CR>") -- save
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
 keymap.set("n", "<leader>u", ":ArgWrap<CR>") -- Arg wrap
