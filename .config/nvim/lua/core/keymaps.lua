@@ -14,6 +14,10 @@ keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
 keymap.set("n", "<leader>u", ":ArgWrap<CR>") -- Arg wrap
 keymap.set("n", "<f9>", ":noh<CR>") -- Clear selection
 
+
+-- java
+keymap.set("n", "js", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
+
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
