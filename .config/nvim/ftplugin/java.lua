@@ -3,13 +3,15 @@ local jdtls = require('jdtls')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.env.HOME .. '/jdtls-workspace/' .. project_name
 
+local share_dir = '/.local/share/vimilin/'
 -- Needed for debugging
 local bundles = {
-  vim.fn.glob(vim.env.HOME .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
+  vim.fn.glob(vim.env.HOME .. share_dir .. 'mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
 }
 
+
 -- Needed for running/debugging unit tests
-vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
+vim.list_extend(bundles, vim.split(vim.fn.glob(vim.env.HOME .. share_dir .. "mason/share/java-test/*.jar", 1), "\n"))
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -22,16 +24,16 @@ local config = {
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
     '-Dlog.protocol=true',
     '-Dlog.level=ALL',
-    '-javaagent:' .. vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/lombok.jar',
+    '-javaagent:' .. vim.env.HOME .. share_dir .. 'mason/share/jdtls/lombok.jar',
     '-Xmx4g',
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 
     -- Eclipse jdtls location
-    '-jar', vim.env.HOME .. '/.local/share/nvim/mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
+    '-jar', vim.env.HOME .. share_dir .. 'mason/share/jdtls/plugins/org.eclipse.equinox.launcher.jar',
     -- TODO Update this to point to the correct jdtls subdirectory for your OS (config_linux, config_mac, config_win, etc)
-    '-configuration', vim.env.HOME .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+    '-configuration', vim.env.HOME .. share_dir .. 'mason/packages/jdtls/config_linux',
     '-data', workspace_dir
   },
 
@@ -44,7 +46,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = '/usr/lib/jvm/java-17-amazon-corretto',
+      home = '/etc/alternatives/java_sdk_17_openjdk/',
       eclipse = {
         downloadSources = true,
       },
@@ -55,7 +57,11 @@ local config = {
         runtimes = {
           {
             name = "JavaSE-11",
-            path = "/usr/jdk11/",
+            path = "/usr/jdk11",
+          },
+          {
+            name = "JavaSE-17",
+            path = "/usr/bin/java",
           },
         }
       },
@@ -131,4 +137,3 @@ end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
 jdtls.start_or_attach(config)
-
