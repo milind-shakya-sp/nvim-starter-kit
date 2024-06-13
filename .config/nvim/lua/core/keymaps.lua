@@ -16,7 +16,7 @@ keymap.set("n", "<f9>", ":noh<CR>") -- Clear selection
 
 
 -- java
-keymap.set("n", "js", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
+keymap.set("n", "ss", ":TermExec cmd='/usr/jdk11/bin/jshell'<CR>") -- ToggleTerm Jshell 
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
