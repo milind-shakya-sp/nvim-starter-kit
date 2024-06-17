@@ -56,6 +56,7 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle maximize tab
 keymap.set("n", "<leader>ee", ":Neotree toggle<CR>") -- toggle file explorer
 keymap.set("n", "<leader>ef", ":Neotree float<CR>") -- Float
 keymap.set("n", "<leader>eo", ":Neotree focus<CR>") -- focus
+keymap.set("n", "<leader>er", ":Neotree filesystem reveal left<CR>") -- focus
 
 -- Telescope
 keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, {})

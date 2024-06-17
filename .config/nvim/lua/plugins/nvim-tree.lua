@@ -9,10 +9,22 @@ return {
   },
   opts = {
      window = {
+      filesystem = {
+        follow_current_file = {
+          enabled=true,
+          leave_dirs_open=true
+        }
+      },
+      buffers = {
+        follow_current_file = {
+          enabled=true,
+          leave_dirs_open=true
+        }
+      },
       mappings = { ["P"] = {
         "toggle_preview",
         config = {
-          use_float = false,
+          use_float = true,
           use_image_nvim = true
         }
       }
